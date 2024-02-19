@@ -14,3 +14,10 @@ elif choice == '2':
     numbers = [int(s) for s in re.findall(r'\d+', string)]
     min_number = min(numbers)
     print(f"Минимальное натуральное число в строке: {min_number}")
+elif choice == '3':
+    import re
+    string = input("Введите строку: ")
+    max_digits = max(len(s) for s in re.findall(r'\d+', string))
+    print(f"Наибольшее количество идущих подряд цифр: {max_digits}")
+else:
+    print("Некорректный выбор задачи.")
