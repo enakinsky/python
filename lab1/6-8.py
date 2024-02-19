@@ -8,3 +8,9 @@ if choice == '1':
     string = input("Введите строку: ")
     max_cyrillic = max(len(s) for s in string.split() if all(c.isalpha() and c.isalpha() for c in s))
     print(f"Наибольшее количество идущих подряд символов кириллицы: {max_cyrillic}")
+elif choice == '2':
+    import re
+    string = input("Введите строку: ")
+    numbers = [int(s) for s in re.findall(r'\d+', string)]
+    min_number = min(numbers)
+    print(f"Минимальное натуральное число в строке: {min_number}")
