@@ -19,3 +19,29 @@ def min(x):
         return print("does not exist")
     else:
         return last
+------------------------------
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+def sum_of_divisors(num):
+    def digit_product(n):
+        result = 1
+        for digit in str(n):
+            result *= int(digit)
+        return result
+
+    def digit_sum(n):
+        return sum(int(digit) for digit in str(n))
+
+    def is_coprime(a, b):
+        return gcd(a, b) == 1
+
+    divisors_sum = 0
+    for i in range(1, num + 1):
+        if num % i == 0:
+            if is_coprime(i, digit_sum(num)) and not is_coprime(i, digit_product(num)):
+                divisors_sum += i
+
+    return divisors_sum
