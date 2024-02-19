@@ -1,0 +1,52 @@
+def swap_min_max(arr):
+    min_idx = arr.index(min(arr))
+    max_idx = arr.index(max(arr))
+    arr[min_idx], arr[max_idx] = arr[max_idx], arr[min_idx]
+
+def check_max_in_range(arr, a, b):
+    max_num = max(arr)
+    return max_num in arr[a:b+1]
+
+def is_global_min(arr, idx):
+    return arr[idx] == min(arr)
+
+def average_abs(arr):
+    total = sum(abs(num) for num in arr)
+    return total / len(arr)
+
+def build_new_list(arr):
+    avg = sum(arr) / len(arr)
+    max_val = max(arr)
+    new_list = [num for num in arr if avg < num < max_val]
+    return new_list
+
+print("Выберите задачу:")
+print("1. Поменять местами минимальный и максимальный элементы массива.")
+print("2. Проверить наличие максимального элемента массива в указанном интервале.")
+print("3. Определить, является ли элемент по указанному индексу глобальным минимумом.")
+print("4. Найти среднее арифметическое модулей элементов массива.")
+print("5. Построить новый список с определенными условиями.")
+
+choice = input("Ваш выбор (1/2/3/4/5): ")
+
+if choice == "1":
+    arr = list(map(int, input("Введите целочисленный массив через пробел: ").split()))
+    swap_min_max(arr)
+    print("Измененный массив:", arr)
+elif choice == "2":
+    arr = list(map(int, input("Введите целочисленный массив через пробел: ").split()))
+    a, b = map(int, input("Введите интервал через пробел a b: ").split())
+    print("Максимальный элемент в интервале?", check_max_in_range(arr, a, b))
+elif choice == "3":
+    arr = list(map(int, input("Введите целочисленный массив через пробел: ").split()))
+    idx = int(input("Введите натуральный индекс: "))
+    print("Элемент по указанному индексу - глобальный минимум?", is_global_min(arr, idx))
+elif choice == "4":
+    arr = list(map(int, input("Введите целочисленный массив через пробел: ").split()))
+    print("Среднее арифметическое модулей элементов:", average_abs(arr))
+elif choice == "5":
+    arr = list(map(int, input("Введите целочисленный массив через пробел: ").split()))
+    new_list = build_new_list(arr)
+    print("Новый список:", new_list)
+else:
+    print("Ошибка! Неверный выбор задачи.")
