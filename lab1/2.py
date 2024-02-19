@@ -6,3 +6,7 @@ def shuffle_string(input_string):
 def is_palindrome(input_string):
     letters = [char for char in input_string if char.isalpha()]
     return letters == letters[::-1]
+def sort_words_by_length(input_string):
+    words = input_string.split()
+    sorted_words = ' '.join(sorted(words, key=len))
+    return sorted_words
